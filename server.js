@@ -12,7 +12,7 @@ var handlebars = require('express3-handlebars')
 /* -----------------------------
 PARTIALS
 -------------------------------- */
-
+//Handlebars.registerPartial('header', './partials/header.handlebars')
 // -----------------------------
 
 
