@@ -1,2 +1,11 @@
 .navButton {
+	height: 40px;
+}
+
+.navbar .container-fluid {
+	height: 40px;
+}
+
+.navbar-width-fixer {
+	min-width: 500px;
 }

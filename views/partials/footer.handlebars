@@ -1,5 +1,20 @@
 	</div>
 
+
+	
+	<div class="navbar-width-fixer">
+	<div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+	<div class="container">
+		<ul class="nav navbar-nav">
+		{{#each navBarButtons}}
+		<li class="navbar-btn">
+			<a href="{{url}}"><img src="resources/{{imgFile}}" class="navButton img-responsive" /></a>
+		</li>
+		{{/each}}
+		</ul>
+	</div>
+	</div>
+	</div>
 	<script src="js/jquery-1.11.0.js"></script>
 	<script src="js/procrastinot.js"></script>
 </body>

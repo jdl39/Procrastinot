@@ -1,7 +1,6 @@
-var data = require('../public/js/contexts.js').data
+exports.data = {}
 
-exports.view = function(req, res){
-	data['buttons'] = [
+exports.data['navBarButtons'] = [
 			{
 				'name' : 'Profile',
 				'imgFile' : 'profileStub.png',
@@ -25,7 +24,5 @@ exports.view = function(req, res){
 				'imgFile' : 'helpStub.png',
 				'url' : '/',
 				'description' : 'Press this at any time to return to this screen.',
-			},
+			}
 		]
-	res.render('index', data)
-};

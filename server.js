@@ -9,13 +9,6 @@ var handlebars = require('express3-handlebars')
 var projects = require('./routes/projects');
 
 
-/* -----------------------------
-PARTIALS
--------------------------------- */
-//Handlebars.registerPartial('header', './partials/header.handlebars')
-// -----------------------------
-
-
 
 /* -----------------------------
 ROUTE OBJECTS
