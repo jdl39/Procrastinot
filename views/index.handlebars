@@ -1,5 +1,18 @@
 {{> header}}
 
-		<h1>Hello, Procrastinot!</h1>
+		<h1 class="text-center">Welcome to Procrastinot!</h1>
+		<p>Welcome to Procrastinot! You can navigate through the app using the buttons at the bottom of the screen!</p>
+
+		{{#each buttons}}
+		<div class="row">
+			<div class="col-xs-1">
+				<a href="{{url}}"><img src="resources/{{imgFile}}" class="navButton img-responsive" /></a>
+			</div>
+			<div class="col-xs-11">
+				<h2>{{name}}</h2>
+				<p>{{description}}</p>
+			</div>
+		</div>
+		{{/each}}
 
 {{> footer}}
