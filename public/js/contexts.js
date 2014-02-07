@@ -10,7 +10,7 @@ exports.data['navBarButtons'] = [
 			{
 				'name' : 'Projects',
 				'imgFile' : 'projectsStub.png',
-				'url' : '/',
+				'url' : '/projects',
 				'description' : 'Here you can manage your current projects',
 			},
 			{
