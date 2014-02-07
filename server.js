@@ -5,8 +5,8 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var handlebars = require('express3-handlebars')
-var projects = require('./routes/projects');
+var handlebars = require('express3-handlebars');
+
 
 
 /* -----------------------------
@@ -20,7 +20,9 @@ PARTIALS
 /* -----------------------------
 ROUTE OBJECTS
 -------------------------------- */
-var index = require('./routes/index')
+var index = require('./routes/index');
+var projects = require('./routes/projects');
+var addproject = require('./routes/addproject');
 // -----------------------------
 
 var app = express();
@@ -51,7 +53,8 @@ if ('development' == app.get('env')) {
 APP ROUTES
 -------------------------------- */
 app.get('/', index.view);
-app.get('/projects', projects.view);
+app.get('/projects', projects.viewProjects);
+app.get('/addproject', addproject.viewProject);
 // -----------------------------
 
 

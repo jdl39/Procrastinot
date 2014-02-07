@@ -1,4 +1,4 @@
-exports.view = function(req, res){
-	console.log(data);
+exports.viewProjects = function(req, res){
+	
 	res.render('projects');
 };
