@@ -1,3 +1,15 @@
 {{> header}}
-<h1>PROFILE</h1>
+<h1 class="text-center">Profile</h1>
+<div class="row">
+	<div class="col-xs-3">
+		<img src="{{imgURL}}" class="profilePic img-responsive" />
+	</div>
+	<div class="col-xs-9">
+		<table>
+			<tr><td>Name:</td><td>{{username}}</td></tr>
+			<tr><td>Level:</td><td>{{level}}</td></tr>
+			<tr><td>Points:</td><td>{{points}}</td></tr>
+		</table>
+	</div>
+</div>
 {{> footer}}

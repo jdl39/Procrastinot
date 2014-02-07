@@ -9,3 +9,16 @@ h1{
 body {
 	padding-bottom: 86px;
 }
+
+.profilePic {
+	width: 50px;
+	height: 50px;
+}
+
+.homeButton {
+	height: 40px;
+}
+
+.noTopMargin {
+	margin-top: 0px;
+}
