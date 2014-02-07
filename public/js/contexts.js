@@ -4,7 +4,7 @@ exports.data['navBarButtons'] = [
 			{
 				'name' : 'Profile',
 				'imgFile' : 'profileStub.png',
-				'url' : '/',
+				'url' : '/profile',
 				'description' : 'Here you will find information about your account.',
 			},
 			{
@@ -16,7 +16,7 @@ exports.data['navBarButtons'] = [
 			{
 				'name' : 'Leaderboards',
 				'imgFile' : 'leaderboardsStub.png',
-				'url' : '/',
+				'url' : '/leaderboards',
 				'description' : 'Here you can see how you rank against your friends and the world!',
 			},
 			{

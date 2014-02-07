@@ -16,6 +16,8 @@ ROUTE OBJECTS
 var index = require('./routes/index');
 var projects = require('./routes/projects');
 var addproject = require('./routes/addproject');
+var profile = require('./routes/profile');
+var leaderboards = require('./routes/leaderboards');
 // -----------------------------
 
 var app = express();
@@ -48,6 +50,8 @@ APP ROUTES
 app.get('/', index.view);
 app.get('/projects', projects.viewProjects);
 app.get('/addproject', addproject.viewProject);
+app.get('/profile', profile.view);
+app.get('/leaderboards', leaderboards.view);
 // -----------------------------
 
 
