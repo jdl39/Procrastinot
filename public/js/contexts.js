@@ -26,3 +26,9 @@ exports.data['navBarButtons'] = [
 				'description' : 'Press this at any time to return to this screen.',
 			}
 		]
+
+exports.data['possiblePointVals'] = []
+
+for (var i=0; i < 21; i++) {
+	exports.data['possiblePointVals'].push({"pointVal" : i*50})
+}

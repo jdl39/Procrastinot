@@ -3,22 +3,25 @@
 <form id="addProjectForm" role="form" method="get" action="">
 		
 	    <div class="form-group">
-	      <label for="name">ProjectName:</label>
-	      <input type="text" class="form-control" id="name" placeholder="Name" name="name">
+	      <label for="name">Project Name:</label>
+	      <input type="text" class="form-control" id="name" placeholder="Name" name="name" autofocus>
 	    </div>
 	    <div class="form-group">
-	      <label for="description">ProjectDescription:</label>
-	      <input type="text" class="form-control" id="description" placeholder="Description" name="description">
+	      <label for="description">Due Date:</label>
+	      <input type="text" class="form-control datePicker" id="duedate" placeholder="Description" name="description">
 	    </div>
 	    <div class="form-group">
-	      <label for="points">ProjectPoints:</label>
-	      <input type="text" class="form-control" id="points" placeholder="Points" name="points">
+	      <label for="points">Project Points:</label>
+	      <select class="form-control" id="points" placeholder="Points" name="points">
+	      	{{#each possiblePointVals}}
+	      	<option value="{{pointVal}}">{{pointVal}} Points</option>
+	      	{{/each}}
+	      </select>
 	    </div>
 	    <input type="submit" id="submitBtn" class="btn btn-default" value="Add Project"></input>
 	</form>
 
 <a href="/projects">"Go back"</a>
-
 	
 {{> footer}}
 

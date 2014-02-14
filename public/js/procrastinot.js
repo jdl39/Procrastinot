@@ -12,3 +12,5 @@ $(".projectCompleteBox").click(function(e) {
 
 	// Mark project finished
 })
+
+$(".datePicker").datepicker()
