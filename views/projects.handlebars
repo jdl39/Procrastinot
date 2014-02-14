@@ -2,18 +2,31 @@
 
 	<h1>Projects</h1>
 
-	<h2>Current Projects</h2>
-	<p>This is where the list of in-progress projects will go<p>
+	<div class="row">
+		<div class="col-xs-7">
+			<h4>Current Projects</h4>
+		</div>
+		<div class="col-xs-4">
+			<form id="addproject" role="form" method="get" action="/addproject">
+	    		<input type="submit" id="submitBtn" class="btn btn-default" value="Add Project"></input>
+			</form>
+		</div>
+	</div>
 
-	<h3>Past Projects</h3>
-	<p>This is where the list of past projects will go<p>
+	<table class="projectTable fullProjectTable">
+		<tr><td>Name</td><td>Due</td><td>&#x2713;</td></tr>
+	{{#each currentProjects}}
+		<tr class="projectRow"><td>{{name}}</td><td>{{dueDate}}</td><td class="projectCompleteBox"></td></tr>
+	{{/each}}
+	</table>
 
-	<h4>Add a Project</h4>
-
-	<form id="addproject" role="form" method="get" action="/addproject">
-		
-	    <input type="submit" id="submitBtn" class="btn btn-default" value="Add Project"></input>
-	</form>
+	<h4>Past Projects</h4>
+	<table class="projectTable">
+		<tr><td>Name</td><td>Points</td><td>Completed</td></tr>
+	{{#each recentProjects}}
+		<tr class="projectRow" href="/addProject?"><td>{{name}}</td><td>{{points}}</td><td>{{completeDate}}</td></tr>
+	{{/each}}
+	</table>
 
 
 
