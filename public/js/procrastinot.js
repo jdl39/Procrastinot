@@ -14,3 +14,4 @@ $(".projectCompleteBox").click(function(e) {
 })
 
 $(".datePicker").datepicker()
+$(".datePicker").textInput('disable')
