@@ -8,5 +8,86 @@ exports.view = function(req, res){
 	data['level'] = 3
 	data['points'] = 9001
 
+	data['friends'] = [
+		{
+			"name" : "Bob's best friend",
+			"imageURL" : "http://lorempixel.com/output/people-q-c-640-480-5.jpg",
+			"profileURL" : "/profile"
+		},
+		{
+			"name" : "Bob's next best friend",
+			"imageURL" : "http://lorempixel.com/output/people-q-c-640-480-5.jpg",
+			"profileURL" : "/profile"
+		},
+		{
+			"name" : "Bob's worst nightmare",
+			"imageURL" : "http://lorempixel.com/output/people-q-c-640-480-5.jpg",
+			"profileURL" : "/profile"
+		}
+	]
+
+	data['currentProjects'] = [
+		{
+			"name" : "CS147 Assignment 6",
+			"points" : 200,
+			"dueDate" : "02/13/2014"
+		},
+		{
+			"name" : "CS147 Assignment 7",
+			"points" : 200,
+			"dueDate" : "02/20/2014"
+		},
+		{
+			"name" : "CS147 Assignment 8",
+			"points" : 200,
+			"dueDate" : "02/27/2014"
+		},
+		{
+			"name" : "CS147 Assignment 6",
+			"points" : 200,
+			"dueDate" : "02/13/2014"
+		},
+		{
+			"name" : "CS147 Assignment 7",
+			"points" : 200,
+			"dueDate" : "02/20/2014"
+		},
+		{
+			"name" : "CS147 Assignment 8",
+			"points" : 200,
+			"dueDate" : "02/27/2014"
+		},
+		{
+			"name" : "CS147 Assignment 6",
+			"points" : 200,
+			"dueDate" : "02/13/2014"
+		},
+		{
+			"name" : "CS147 Assignment 7",
+			"points" : 200,
+			"dueDate" : "02/20/2014"
+		},
+		{
+			"name" : "CS147 Assignment 8",
+			"points" : 200,
+			"dueDate" : "02/27/2014"
+		},
+		{
+			"name" : "CS147 Assignment 6",
+			"points" : 200,
+			"dueDate" : "02/13/2014"
+		},
+		{
+			"name" : "CS147 Assignment 7",
+			"points" : 200,
+			"dueDate" : "02/20/2014"
+		},
+		{
+			"name" : "CS147 Assignment 8",
+			"points" : 200,
+			"dueDate" : "02/27/2014"
+		}
+	]
+
 	res.render('profile', data);
 };

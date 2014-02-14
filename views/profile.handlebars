@@ -1,5 +1,5 @@
 {{> header}}
-<h1 class="text-center">Profile</h1>
+<h1>Profile</h1>
 <div class="row">
 	<div class="col-xs-3">
 		<img src="{{imgURL}}" class="profilePic img-responsive" />
@@ -11,5 +11,31 @@
 			<tr><td>Points:</td><td>{{points}}</td></tr>
 		</table>
 	</div>
+</div>
+
+<a href="/projects"><h3>Current Projects</h3></a>
+<table class="projectTable">
+	<tr><td>Name</td><td>Points</td><td>Due</td></tr>
+{{#each currentProjects}}
+	<tr class="projectRow"><td>{{name}}</td><td>{{points}}</td><td>{{dueDate}}</td></td>
+{{/each}}
+</table>
+
+<h3>Recently Completed</h3>
+<table class="projectTable">
+	<tr><td>Name</td><td>Points</td><td>Completed</td></tr>
+{{#each recentProjects}}
+	<tr class="projectRow"><td>{{name}}</td><td>{{points}}</td><td>{{completeDate}}</td></td>
+{{/each}}
+</table>
+
+<h3>Friends</h3>
+<div class="collection">
+{{#each friends}}
+	<div>
+		<a href="{{profileURL}}"><img src="{{imageURL}}" class="friendTableImage" /></a>
+		<!--<p>{{name}}</p>-->
+	</div>
+{{/each}}
 </div>
 {{> footer}}
