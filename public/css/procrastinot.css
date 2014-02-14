@@ -46,6 +46,27 @@ body {
 	overflow-y:scroll;
 }
 
+.leaderboardTable {
+	display:block;
+	max-height: 600px;
+	width: 400px;
+	overflow-y:scroll;
+}
+
+.leaderboardTable td {
+	width:200%;
+	padding:10px;
+	border: solid black;
+	border-width:2px;
+	height:20px;
+}
+.leaderboardTable tr {
+	height: 50px;
+}
+
+.leaderboardRow:hover {
+	background-color: blue;
+}
 .projectRow:hover {
 	background-color: green;
 }
