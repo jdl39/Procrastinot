@@ -18,6 +18,7 @@ var projects = require('./routes/projects');
 var addproject = require('./routes/addproject');
 var profile = require('./routes/profile');
 var leaderboards = require('./routes/leaderboards');
+var login = require('./routes/login');
 // -----------------------------
 
 var app = express();
@@ -52,6 +53,7 @@ app.get('/projects', projects.viewProjects);
 app.get('/addproject', addproject.viewProject);
 app.get('/profile', profile.view);
 app.get('/leaderboards', leaderboards.view);
+app.get('/login', login.view)
 // -----------------------------
 
 
