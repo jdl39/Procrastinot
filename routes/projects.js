@@ -6,10 +6,10 @@ exports.viewProjects = function(req, res){
 
 	if (!fbID) {
 		// TODO: Make a better error response.
-		res.send(400);
+		res.send(400, "You're a bad cookie.");
 	}
 
-	models.User.findOnelogo({"FBID" : fbID}).populate('_projects', options={sort: 'due'}).exec(function(err, user) {
+	models.User.findOne({"FBID" : fbID}).populate('_projects', options={sort: 'due'}).exec(function(err, user) {
 		if (err) {
 			res.send(500)
 		} else {
@@ -32,6 +32,34 @@ exports.viewProjects = function(req, res){
 		}
 	})
 };
+
+exports.viewProject = function(req, res){
+	res.render('addproject', data);
+};
+
+exports.newProject = function(req, res) {
+	var fbID = req.cookies.fbid;
+	if (!fbID) {
+		res.send(400, "You're a bad cookie.");
+	}
+
+	var project = new models.Project(req.body)
+	project.save(function(err) {
+		if (err) {
+			console.log(err);
+			res.redirect("/projects")
+		}
+		else {
+			models.User.findOne({"FBID" : fbID}).exec(function(err, user) {
+				if (err) console.log(err);
+				else {
+					user._projects.push(project);
+				}
+				res.redirect("/projects")
+			});
+		}
+	})
+}
 
 /*
 data['currentProjects'] = [

@@ -22,7 +22,6 @@ ROUTE OBJECTS
 -------------------------------- */
 var index = require('./routes/index');
 var projects = require('./routes/projects');
-var addproject = require('./routes/addproject');
 var profile = require('./routes/profile');
 var leaderboards = require('./routes/leaderboards');
 var login = require('./routes/login');
@@ -57,7 +56,8 @@ APP ROUTES
 -------------------------------- */
 app.get('/', index.view);
 app.get('/projects', projects.viewProjects);
-app.get('/addproject', addproject.viewProject);
+app.post('/projects/add', projects.newProject);
+app.get('/addproject', projects.viewProject);
 app.get('/profile', profile.view);
 app.get('/leaderboards', leaderboards.view);
 app.get('/login', login.view)

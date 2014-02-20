@@ -1,6 +1,6 @@
 {{> header}}
 		<h1>Add a Project</h1>
-<form id="addProjectForm" role="form" method="get" action="">
+		<form id="addProjectForm" role="form">
 		
 	    <div class="form-group">
 	      <label for="name">Project Name:</label>
@@ -18,10 +18,12 @@
 	      	{{/each}}
 	      </select>
 	    </div>
-	    <input type="submit" id="submitBtn" class="btn btn-default" value="Add Project"></input>
+	    <button id="addProjectSubmitBtn" class="btn btn-default">Add Project</button>
 	</form>
 
 <a href="/projects">"Go back"</a>
+
+<script src="js/addProject.js"></script>
 	
 {{> footer}}
 

@@ -8,7 +8,7 @@ exports.view = function(req, res){
 exports.processLogin = function(req, res) {
 	var fbid = req.params.fbid;
 	if (!fbid) {
-		res.send(400);
+		res.send(400, "You're a bad cookie.");
 	}
 	res.cookie("fbid", fbid);
 	models.User.find({"FBID" : fbid}).exec(function(err, users) {
