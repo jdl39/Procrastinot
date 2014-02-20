@@ -17,17 +17,19 @@ exports.viewProjects = function(req, res){
 			data['pastProjects'] = []
 			for (var i = 0; i < user._projects.length; i++) {
 				var project = user._projects[i];
+				console.log("Gots a project!!! " + project.title);
 				var projectJSON = {
 					"name" : project.title,
 					"points" : project.points,
-					"dueDate" : project.due
+					"dueDate" : project.due.getMonth() + "/" + project.due.getDate() + "/" + project.due.getFullYear()
 				}
-				if (project.due < Date.now() && !project.success) {
+				if (project.due >= Date.now() && !project.success) {
 					data['currentProjects'].push(projectJSON)
 				} else {
 					data['pastProjects'].push(projectJSON)
 				}
 			}
+			console.log(data)
 			res.render('projects', data);
 		}
 	})
@@ -51,11 +53,20 @@ exports.newProject = function(req, res) {
 		}
 		else {
 			models.User.findOne({"FBID" : fbID}).exec(function(err, user) {
-				if (err) console.log(err);
+				if (err) {
+					console.log(err);
+					res.redirect("/projects");
+				}
 				else {
 					user._projects.push(project);
+					user.save(function(err) {
+						console.log("It should work!!!!!!!!!!!!!!!!! D: D: D:");
+						models.Project.find().exec(function(err, projects) { console.log("we have " + projects.length + " projects...") });
+						models.User.findOne({"FBID" : fbID}).exec(function(err, user){ console.log("you have " + user._projects.length + " projects...")});
+						if (err) console.log(err);		
+						res.redirect("/projects");
+					});
 				}
-				res.redirect("/projects")
 			});
 		}
 	})
