@@ -6,6 +6,13 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars');
+var mongoose = require('mongoose');
+
+// MONGODB
+var local_database_name = 'procrastinot';
+var local_database_uri  = 'mongodb://localhost/' + local_database_name
+var database_uri = process.env.MONGOLAB_URI || local_database_uri
+mongoose.connect(database_uri);
 
 
 
@@ -54,6 +61,8 @@ app.get('/addproject', addproject.viewProject);
 app.get('/profile', profile.view);
 app.get('/leaderboards', leaderboards.view);
 app.get('/login', login.view)
+app.get('/login/:fbid', login.processLogin)
+
 // -----------------------------
 
 

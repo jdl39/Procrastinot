@@ -18,8 +18,6 @@ $(".datePicker").datepicker()
 
 
 // FACEBOOK STUFF --------------------------
-// Called once the FB SDK is initialized. (I think?)
-//window.fbAsyncInit = function() {
   FB.init({
     appId      : '598744690199924',
     status     : true, // check login status
@@ -27,7 +25,6 @@ $(".datePicker").datepicker()
     xfbml      : true  // parse XFBML
   });
 
-  //FB.Event.subscribe('auth.authResponseChange', function(response) {
   FB.getLoginStatus(function(response) {
     // Here we specify what we do with the response anytime this event occurs.
 
@@ -38,15 +35,8 @@ $(".datePicker").datepicker()
       //FB.login()
     }
   });
-//};
+// -----------------------------------------
 
-/*
-// Load the SDK asynchronously
-(function(d, s, id){
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));*/
+// UTILITY FUNCTIONS -----------------------
+
 // -----------------------------------------
