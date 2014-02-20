@@ -11,6 +11,23 @@ mongoose.connect(database_uri);
 // Step 1: load the JSON data
 // TODO: Have JSON data...
 
-// Step 2: Remove all existing documents
+// Step 2: Remove all existing documents (and reinitialize dummy data?)
+var usersDone = false
+var projectsDone = false
+models.User.find().remove(function(err) {
+	if (err) console.log(err);
+	usersDone = true
+	if (projectsDone) {
+		console.log("done.");
+		mongoose.connection.close();
+	}
+});
 
-// Step 3: load the data from the JSON file
+models.Project.find().remove(function(err) {
+	if (err) console.log(err);
+	projectsDone = true
+	if (usersDone) {
+		console.log("done.");
+		mongoose.connection.close();
+	}
+});

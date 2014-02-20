@@ -9,7 +9,7 @@ exports.viewProjects = function(req, res){
 		res.send(400);
 	}
 
-	models.User.findOne({"FBID" : fbID}).populate('_projects', options={sort: 'due'}).exec(function(err, user) {
+	models.User.findOnelogo({"FBID" : fbID}).populate('_projects', options={sort: 'due'}).exec(function(err, user) {
 		if (err) {
 			res.send(500)
 		} else {
