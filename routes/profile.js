@@ -1,30 +1,26 @@
 var data = require('../public/js/contexts.js').data
+var models = require('../models')
 
 exports.view = function(req, res){
-	
-	// STUBBED DATA
-	data['username'] = "Bob"
-	data['imgURL'] = 'http://static4.businessinsider.com/image/50364bc869bedd7e37000015/meet-foursquares-money-man-steven-rosenblatt.jpg'
-	data['level'] = 3
+	data['level'] = 0
 	data['points'] = 9001
 
-	data['friends'] = [
-		{
-			"name" : "Bob's best friend",
-			"imageURL" : "http://lorempixel.com/output/people-q-c-640-480-5.jpg",
-			"profileURL" : "/profile"
-		},
-		{
-			"name" : "Bob's next best friend",
-			"imageURL" : "http://lorempixel.com/output/people-q-c-640-480-5.jpg",
-			"profileURL" : "/profile"
-		},
-		{
-			"name" : "Bob's worst nightmare",
-			"imageURL" : "http://lorempixel.com/output/people-q-c-640-480-5.jpg",
-			"profileURL" : "/profile"
-		}
-	]
-
-	res.render('profile', data);
+	var fbID = req.cookies.fbid;
+	if (!fbID) res.send(400);
+	models.User.findOne({"FBID" : fbID}).exec(function(err, user) {
+		data['points'] = user.points;
+		res.render('profile', data);
+	})
 };
+
+exports.userJSON = function(req, res) {
+	var fbIDs = req.body["ids"];
+	models.User.find().exec(function(err, users) {
+		var toReturn = []
+		for (var i = 0; i < users.length; i++) {
+			var user = users[i];
+			if (fbIDs.indexOf(user.FBID) != -1) toReturn.push(user);
+		}
+		res.json(toReturn);
+	})
+}

@@ -9,7 +9,7 @@
 
 <div class="row">
 	<div class="col-xs-3">
-		<img src="{{imgURL}}" class="profilePic img-responsive" />
+		<img src="http://upload.wikimedia.org/wikipedia/commons/0/09/Man_Silhouette.png" class="profilePic img-responsive" />
 	</div>
 	<div class="col-xs-9">
 		<table>
@@ -44,13 +44,7 @@
 -->
 
 <h3>Friends</h3>
-<div class="collection">
-{{#each friends}}
-	<div>
-		<a href="{{profileURL}}"><img src="{{imageURL}}" class="friendTableImage" /></a>
-		<!--<p>{{name}}</p>-->
-	</div>
-{{/each}}
+<div class="collection" id ="friendCollection">
 </div>
 
 <script src="js/projectTable.js"></script>

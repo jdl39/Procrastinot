@@ -19,5 +19,34 @@
 // -----------------------------------------
 
 // UTILITY FUNCTIONS -----------------------
+var enumerateFriends = function(callback) {
+  FB.getLoginStatus(function(response) {
+    if (response.status === "connected") {
+      FB.api('/me', function(user) {
+        console.log(user)
+        $("#username").text(user["name"])
+      });
 
+      FB.api('/me/picture?redirect=0&type=large', function(response) {
+        console.log(response);
+        $(".profilePic").attr("src", response["data"].url);
+      });
+
+      FB.api('/me/friends', function(response) {
+        var friendIDs = []
+        for (var i = 0; i < response["data"].length; i++) {
+          var friend = response["data"][i];
+          friendIDs.push(friend["id"]);
+        }
+        $.post("/users", {"ids" : friendIDs}, function(friendList) {
+          console.log(friendList);
+          for (var i = 0; i < friendList.length; i++) {
+            var friend = friendList[i];
+            callback(friend);
+          }
+        })
+      });
+    }
+  });
+}
 // -----------------------------------------
