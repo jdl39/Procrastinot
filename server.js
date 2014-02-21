@@ -25,6 +25,8 @@ var projects = require('./routes/projects');
 var profile = require('./routes/profile');
 var leaderboards = require('./routes/leaderboards');
 var login = require('./routes/login');
+var help = require('./routes/help');
+var friends = require('./routes/friends');
 // -----------------------------
 
 var app = express();
@@ -62,6 +64,9 @@ app.get('/profile', profile.view);
 app.get('/leaderboards', leaderboards.view);
 app.get('/login', login.view)
 app.get('/login/:fbid', login.processLogin)
+app.get('/help', help.viewHelp);
+app.get('/friends', friends.viewFriends);
+
 
 // -----------------------------
 

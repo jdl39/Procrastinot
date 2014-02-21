@@ -1,0 +1,22 @@
+{{> header}}
+
+		<h1 class="text-center">Help<h1>
+
+		{{#each navBarButtons}}
+		<div class="row">
+			<div class="col-xs-3">
+				<a href="{{url}}" class="btn btn-default homeButton"><img src="resources/{{imgFile}}" class="img-responsive" /></a>
+			</div>
+			<div class="col-xs-9">
+				<h3 class="noTopMargin">{{name}}</h3>
+				<p>{{description}}</p>
+			</div>
+		</div>
+		{{/each}}
+
+
+
+
+		
+
+{{> footer}}

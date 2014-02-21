@@ -1,0 +1,21 @@
+{{> header}}
+
+		<h1>Friends</h1>
+		
+		{{#each FakeFriends}}
+		
+		<div>
+		<img src="http://lorempixel.com/500/500/people" alt="Lorem Pixel image" class="friendTableImage">
+		<p>{{name}}</p>
+		<p>Level: {{level}}</p>
+		</div>
+		
+		{{/each}}
+		</form>
+
+	
+		<script src="js/projectTable.js"></script>
+
+		
+
+{{> footer}}
