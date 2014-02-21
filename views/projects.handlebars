@@ -16,7 +16,7 @@
 	<table class="projectTable fullProjectTable">
 		<tr><td>Name</td><td>Due</td><td>&#x2713;</td></tr>
 	{{#each currentProjects}}
-		<tr class="projectRow"><td>{{name}}</td><td>{{dueDate}}</td><td class="projectCompleteBox"></td></tr>
+		<tr class="projectRow"><td>{{name}}</td><td>{{dueDate}}</td><td class="projectCompleteBox" id="{{id}}"></td></tr>
 	{{/each}}
 	</table>
 

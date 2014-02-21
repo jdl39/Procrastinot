@@ -3,7 +3,7 @@ var Mongoose = require('mongoose');
 var UserSchema = new Mongoose.Schema({
 	"FBID" : String,
 	"points" : Number,
-	"_projects" : {type: [Mongoose.Schema.Types.ObjectID], ref: 'Project'}
+	//"_projects" : {type: [Mongoose.Schema.Types.ObjectId], ref: 'Project'}
 });
 
 var ProjectSchema = new Mongoose.Schema({
@@ -11,7 +11,8 @@ var ProjectSchema = new Mongoose.Schema({
 	"due" : Date,
 	"points" : Number,
 	"completed" : Date,
-	"success" : Boolean
+	"success" : Boolean,
+	"_user" : {type: Mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
 exports.Project = Mongoose.model('Project', ProjectSchema);

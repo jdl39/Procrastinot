@@ -8,7 +8,11 @@ $(".projectCompleteBox").hover(function(e) {
 })
 
 $(".projectCompleteBox").click(function(e) {
-	$(this).parent().remove();
-
-	// Mark project finished
+	e.stopPropagation();
+	var json = { "id" : $(this).attr("id")}
+	var saveThis = $(this);
+	$.post("/projects/complete", json, function() {
+		console.log("REMOVING");
+		saveThis.parent().remove();
+	});
 })
