@@ -9,16 +9,22 @@ exports.viewProjects = function(req, res){
 		res.send(400, "You're a bad cookie.");
 	}
 
-	models.User.findOne({"FBID" : fbID}).populate('_projects', options={sort: 'due'}).exec(function(err, user) {
-		if (err) {
-			res.send(500)
+	models.Project.find().exec(function(err, projects) { console.log(projects.length); console.log(projects[0]._user)});
+
+	//models.User.findOne({"FBID" : fbID}).populate('_projects', '_id title due points success', options={sort: 'due'}).exec(function(err, user) {
+	models.User.findOne({"FBID" : fbID}).exec(function(err, user) {
+	models.Project.find({"_user" : user}).exec(function(perr, projects) {
+		if (err || perr) {
+			res.send(500);
 		} else {
 			data['currentProjects'] = []
 			data['pastProjects'] = []
-			for (var i = 0; i < user._projects.length; i++) {
-				var project = user._projects[i];
+			console.log(projects.length);
+			for (var i = 0; i < projects.length; i++) {
+				var project = projects[i];
 				console.log("Gots a project!!! " + project.title);
 				var projectJSON = {
+					"id" : project._id,
 					"name" : project.title,
 					"points" : project.points,
 					"dueDate" : project.due.getMonth() + "/" + project.due.getDate() + "/" + project.due.getFullYear()
@@ -29,9 +35,10 @@ exports.viewProjects = function(req, res){
 					data['pastProjects'].push(projectJSON)
 				}
 			}
-			console.log(data)
+			console.log(data);
 			res.render('projects', data);
 		}
+	})
 	})
 };
 
@@ -45,31 +52,33 @@ exports.newProject = function(req, res) {
 		res.send(400, "You're a bad cookie.");
 	}
 
-	var project = new models.Project(req.body)
-	project.save(function(err) {
+	models.User.findOne({"FBID" : fbID}).exec(function(usererr, user) {
+		if (usererr) console.log(usererr);
+		req.body["_user"] = user;
+		var project = new models.Project(req.body)
+		project.save(function(saveerr) {
+			if (saveerr) {
+				console.log(saveerr);
+			}
+			res.redirect("/projects")
+		})
+	});
+}
+
+exports.completeProject = function(req, res) {
+	var projectID = req.body["id"];
+	models.Project.findOne({"_id" : projectID}).populate('_user').exec(function(err, project) {
 		if (err) {
 			console.log(err);
-			res.redirect("/projects")
+			res.send(500);
+		} else {
+			project._user.points += project.points;
+			project.success = true;
+			project._user.save(function(err) { if (err) console.log(err); });
+			project.save(function(err) { if (err) console.log(err); });
+			res.send(200);
 		}
-		else {
-			models.User.findOne({"FBID" : fbID}).exec(function(err, user) {
-				if (err) {
-					console.log(err);
-					res.redirect("/projects");
-				}
-				else {
-					user._projects.push(project);
-					user.save(function(err) {
-						console.log("It should work!!!!!!!!!!!!!!!!! D: D: D:");
-						models.Project.find().exec(function(err, projects) { console.log("we have " + projects.length + " projects...") });
-						models.User.findOne({"FBID" : fbID}).exec(function(err, user){ console.log("you have " + user._projects.length + " projects...")});
-						if (err) console.log(err);		
-						res.redirect("/projects");
-					});
-				}
-			});
-		}
-	})
+	});
 }
 
 /*

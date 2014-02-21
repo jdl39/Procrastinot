@@ -57,6 +57,7 @@ APP ROUTES
 app.get('/', index.view);
 app.get('/projects', projects.viewProjects);
 app.post('/projects/add', projects.newProject);
+app.post('/projects/complete', projects.completeProject);
 app.get('/addproject', projects.viewProject);
 app.get('/profile', profile.view);
 app.get('/leaderboards', leaderboards.view);
