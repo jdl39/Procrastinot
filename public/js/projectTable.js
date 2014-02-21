@@ -14,5 +14,6 @@ $(".projectCompleteBox").click(function(e) {
 	$.post("/projects/complete", json, function() {
 		console.log("REMOVING");
 		saveThis.parent().remove();
+		// TODO: Add project to "completed" list
 	});
 })

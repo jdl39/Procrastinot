@@ -6,16 +6,18 @@
 	</div>
 	<div class="col-xs-9">
 		<table>
-			<tr><td>Name:</td><td>{{username}}</td></tr>
+			<tr><td>Name:</td><td id="username">Loading...</td></tr>
 			<tr><td>Level:</td><td>{{level}}</td></tr>
 			<tr><td>Points:</td><td>{{points}}</td></tr>
 		</table>
 	</div>
 </div>
 
+<!-- People don't want to see projects on their profile!
 <a href="/projects"><h3>Current Projects</h3></a>
 <table class="projectTable">
 	<tr><td>Name</td><td>Due</td><td>&#x2713;</td></tr>
+
 {{#each currentProjects}}
 	<tr class="projectRow"><td>{{name}}</td><td>{{dueDate}}</td><td class="projectCompleteBox"></td></tr>
 {{/each}}
@@ -28,6 +30,7 @@
 	<tr class="projectRow" href="/addProject?"><td>{{name}}</td><td>{{points}}</td><td>{{completeDate}}</td></tr>
 {{/each}}
 </table>
+-->
 
 <h3>Friends</h3>
 <div class="collection">
@@ -40,4 +43,5 @@
 </div>
 
 <script src="js/projectTable.js"></script>
+<script src="js/profileFunc.js"></script>
 {{> footer}}

@@ -1,5 +1,6 @@
-var data = require('../public/js/contexts.js').data
+var data = require('../public/js/contexts').data
 var models = require('../models')
+var utils = require('../public/js/procrastinotUtils')
 
 exports.viewProjects = function(req, res){
 	var fbID = req.cookies.fbid;
@@ -9,38 +10,10 @@ exports.viewProjects = function(req, res){
 		res.send(400, "You're a bad cookie.");
 	}
 
-	models.Project.find().exec(function(err, projects) { console.log(projects.length); console.log(projects[0]._user)});
-
-	//models.User.findOne({"FBID" : fbID}).populate('_projects', '_id title due points success', options={sort: 'due'}).exec(function(err, user) {
-	models.User.findOne({"FBID" : fbID}).exec(function(err, user) {
-	models.Project.find({"_user" : user}).exec(function(perr, projects) {
-		if (err || perr) {
-			res.send(500);
-		} else {
-			data['currentProjects'] = []
-			data['pastProjects'] = []
-			console.log(projects.length);
-			for (var i = 0; i < projects.length; i++) {
-				var project = projects[i];
-				console.log("Gots a project!!! " + project.title);
-				var projectJSON = {
-					"id" : project._id,
-					"name" : project.title,
-					"points" : project.points,
-					"dueDate" : project.due.getMonth() + "/" + project.due.getDate() + "/" + project.due.getFullYear()
-				}
-				if (project.due >= Date.now() && !project.success) {
-					data['currentProjects'].push(projectJSON)
-				} else {
-					data['pastProjects'].push(projectJSON)
-				}
-			}
-			console.log(data);
-			res.render('projects', data);
-		}
-	})
-	})
-};
+	utils.addUserProjectsToData(fbID, data, function(newdata) {
+		res.render('projects', newdata);
+	});
+}
 
 exports.viewProject = function(req, res){
 	res.render('addproject', data);
@@ -74,6 +47,7 @@ exports.completeProject = function(req, res) {
 		} else {
 			project._user.points += project.points;
 			project.success = true;
+			project.completed = Date.now();
 			project._user.save(function(err) { if (err) console.log(err); });
 			project.save(function(err) { if (err) console.log(err); });
 			res.send(200);
