@@ -22,16 +22,6 @@
 var enumerateFriends = function(callback) {
   FB.getLoginStatus(function(response) {
     if (response.status === "connected") {
-      FB.api('/me', function(user) {
-        console.log(user)
-        $("#username").text(user["name"])
-      });
-
-      FB.api('/me/picture?redirect=0&type=large', function(response) {
-        console.log(response);
-        $(".profilePic").attr("src", response["data"].url);
-      });
-
       FB.api('/me/friends', function(response) {
         var friendIDs = []
         for (var i = 0; i < response["data"].length; i++) {

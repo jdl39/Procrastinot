@@ -43,10 +43,13 @@
 </table>
 -->
 
+{{#if isCurrUser}}
 <h3>Friends</h3>
 <div class="collection" id ="friendCollection">
 </div>
+{{/if}}
 
+<script>var fbID = "{{fbID}}";</script>
 <script src="js/projectTable.js"></script>
 <script src="js/profileFunc.js"></script>
 {{> footer}}
