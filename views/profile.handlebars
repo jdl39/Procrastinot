@@ -19,7 +19,8 @@
 	</div>
 </div>
 
-<!-- People don't want to see projects on their profile!
+{{#unless isCurrUser}}
+<!-- Only allow people to see completed projects?
 <a href="/projects"><h3>Current Projects</h3></a>
 <table class="projectTable">
 	<tr><td>Name</td><td>Due</td><td>&#x2713;</td></tr>
@@ -28,15 +29,16 @@
 	<tr class="projectRow"><td>{{name}}</td><td>{{dueDate}}</td><td class="projectCompleteBox"></td></tr>
 {{/each}}
 </table>
+-->
 
 <h3>Recently Completed</h3>
 <table class="projectTable">
 	<tr><td>Name</td><td>Points</td><td>Completed</td></tr>
-{{#each recentProjects}}
+{{#each pastProjects}}
 	<tr class="projectRow" href="/addProject?"><td>{{name}}</td><td>{{points}}</td><td>{{completeDate}}</td></tr>
 {{/each}}
 </table>
--->
+{{/unless}}
 
 {{#if isCurrUser}}
 <h3>Friends</h3>

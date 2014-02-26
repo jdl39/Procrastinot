@@ -3,6 +3,8 @@ var models = require('../../models')
 exports.addUserProjectsToData = function(fbID, data, callback) {
 	models.User.findOne({"FBID" : fbID}).exec(function(err, user) {
 		models.Project.find({"_user" : user}).exec(function(perr, projects) {
+			console.log(user);
+			console.log(projects.length);
 			if (err || perr) {
 				res.send(500);
 			} else {
