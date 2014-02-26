@@ -7,7 +7,7 @@ FB.getLoginStatus(function(response) {
 
       FB.api('/' + fbID + '/picture?redirect=0&type=large', function(response) {
         console.log(response);
-        $(".profilePic").attr("src", response["data"].url);
+        $("#fbPicLoader").attr("src", response["data"].url);
       });
   	}
 });
@@ -18,3 +18,7 @@ enumerateFriends(function(friend) {
 		$("#friendCollection").append('<div><a href="/profile?fbid=' + friend["FBID"] + '"><img src="' + friendPicture["data"].url + '" class="friendTableImage" /></a></div>');
 	});
 })
+
+$("#helpBtn").click(function(e) {
+  window.location.href = "/";
+});

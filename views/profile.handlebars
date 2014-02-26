@@ -1,28 +1,23 @@
 {{> header}}
 <div class="col-xs-1">
-			<form id="gotohelp" role="form" method="get" action="/help">
-	    		<input type="submit" id="submitBtn" class="btn btn-default" value="Help"></input>
-			</form>
-		</div>
+	<button id="helpBtn" class="btn btn-default">Help</button>
+</div>
 
-<h1 class="text-left">Profile</h1>
+<h1 class="text-centered" id="username">Loading...</h1>
 
 <div class="row">
-	<div class="col-xs-3">
-		<img src="http://upload.wikimedia.org/wikipedia/commons/0/09/Man_Silhouette.png" class="profilePic img-responsive" />
+	<div class="col-xs-12">
+		<img src="http://upload.wikimedia.org/wikipedia/commons/0/09/Man_Silhouette.png" class="img-responsive fullPic" id="fbPicLoader"/>
 	</div>
-	<div class="col-xs-9">
+</div>
+<div class="row">
+	<div class="col-xs-12">
 		<table>
-			<tr><td>Name:</td><td id="username">Loading...</td></tr>
 			<tr><td>Level:</td><td>{{level}}</td></tr>
 			<tr><td>Points:</td><td>{{points}}</td></tr>
 		</table>
 	</div>
-	
-	
-
-
-	</div>
+</div>
 
 <!-- People don't want to see projects on their profile!
 <a href="/projects"><h3>Current Projects</h3></a>
