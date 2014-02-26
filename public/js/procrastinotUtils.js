@@ -14,11 +14,11 @@ exports.addUserProjectsToData = function(fbID, data, callback) {
 						"id" : project._id,
 						"name" : project.title,
 						"points" : project.points,
-						"dueDate" : project.due.getMonth() + "/" + project.due.getDate() + "/" + project.due.getFullYear(),
+						"dueDate" : (project.due.getMonth() + 1) + "/" + project.due.getDate() + "/" + project.due.getFullYear(),
 						"success" : project.success
 					}
 					if (project.completed) {
-						projectJSON["completeDate"] = project.completed.getMonth() + "/" + project.completed.getDate() + "/" + project.completed.getFullYear();
+						projectJSON["completeDate"] = (project.completed.getMonth() + 1) + "/" + project.completed.getDate() + "/" + project.completed.getFullYear();
 					}
 					if (project.due >= Date.now() && !project.success) {
 						data['currentProjects'].push(projectJSON)
