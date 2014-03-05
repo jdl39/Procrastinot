@@ -19,6 +19,7 @@ exports.view = function(req, res){
 	}
 	if (!fbID) res.send(400);
 	models.User.findOne({"FBID" : fbID}).exec(function(err, user) {
+		if (!user) res.send(500, "User not found.");
 		data['points'] = user.points;
 		if (data['fbID'] == "me") {
 			res.render('profile', data);
@@ -47,6 +48,7 @@ exports.view2 = function(req, res){
 	}
 	if (!fbID) res.send(400);
 	models.User.findOne({"FBID" : fbID}).exec(function(err, user) {
+		if (!user) res.send(500, "User not found.");
 		data['points'] = user.points;
 		res.render('profile2', data);
 	})
