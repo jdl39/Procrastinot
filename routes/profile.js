@@ -1,5 +1,6 @@
 var data = require('../public/js/contexts.js').data
 var models = require('../models')
+var utils = require('../public/js/procrastinotUtils')
 
 exports.view = function(req, res){
 	data['level'] = 0
@@ -19,7 +20,13 @@ exports.view = function(req, res){
 	if (!fbID) res.send(400);
 	models.User.findOne({"FBID" : fbID}).exec(function(err, user) {
 		data['points'] = user.points;
-		res.render('profile', data);
+		if (data['fbID'] == "me") {
+			res.render('profile', data);
+		} else {
+			utils.addUserProjectsToData(data['fbID'], data, function(data) {
+				res.render('profile', data);
+			});
+		}
 	})
 };
 

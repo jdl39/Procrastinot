@@ -7,7 +7,7 @@ h1{
 }
 
 body {
-	padding-bottom: 86px;
+	padding-bottom: 96px;
 }
 
 .profilePic {
@@ -90,4 +90,8 @@ body {
 .projectCompleteBox {
 	width:30px;
 	background-color: red;
+}
+
+.fullPic {
+	width:100%;
 }

@@ -40,26 +40,24 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 	<button id="helpBtn" class="btn btn-default">Help</button>
 </div>
 
-<h1 class="text-left">Profile</h1>
+<h1 class="text-centered" id="username">Loading...</h1>
 
 <div class="row">
-	<div class="col-xs-3">
-		<img src="http://upload.wikimedia.org/wikipedia/commons/0/09/Man_Silhouette.png" class="profilePic img-responsive" />
+	<div class="col-xs-12">
+		<img src="http://upload.wikimedia.org/wikipedia/commons/0/09/Man_Silhouette.png" class="img-responsive fullPic" id="fbPicLoader"/>
 	</div>
-	<div class="col-xs-9">
+</div>
+<div class="row">
+	<div class="col-xs-12">
 		<table>
-			<tr><td>Name:</td><td id="username">Loading...</td></tr>
 			<tr><td>Level:</td><td>{{level}}</td></tr>
 			<tr><td>Points:</td><td>{{points}}</td></tr>
 		</table>
 	</div>
-	
-	
+</div>
 
-
-	</div>
-
-<!-- People don't want to see projects on their profile!
+{{#unless isCurrUser}}
+<!-- Only allow people to see completed projects?
 <a href="/projects"><h3>Current Projects</h3></a>
 <table class="projectTable">
 	<tr><td>Name</td><td>Due</td><td>&#x2713;</td></tr>
@@ -68,15 +66,16 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 	<tr class="projectRow"><td>{{name}}</td><td>{{dueDate}}</td><td class="projectCompleteBox"></td></tr>
 {{/each}}
 </table>
+-->
 
 <h3>Recently Completed</h3>
 <table class="projectTable">
 	<tr><td>Name</td><td>Points</td><td>Completed</td></tr>
-{{#each recentProjects}}
+{{#each pastProjects}}
 	<tr class="projectRow" href="/addProject?"><td>{{name}}</td><td>{{points}}</td><td>{{completeDate}}</td></tr>
 {{/each}}
 </table>
--->
+{{/unless}}
 
 {{#if isCurrUser}}
 <h3>Friends</h3>
