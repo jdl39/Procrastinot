@@ -62,7 +62,7 @@ app.post('/projects/add', projects.newProject);
 app.post('/projects/complete', projects.completeProject);
 app.get('/addproject', projects.viewProject);
 app.get('/profile', profile.view);
-app.get('/profile', profile.view2);
+app.get('/profile2', profile.view2);
 //app.get('/profile?:fbid', profile.view)
 app.post('/users', profile.userJSON);
 app.get('/leaderboards', leaderboards.view);
