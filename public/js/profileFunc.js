@@ -8,6 +8,7 @@ FB.getLoginStatus(function(response) {
       FB.api('/' + fbID + '/picture?redirect=0&type=large', function(response) {
         console.log(response);
         $("#fbPicLoader").attr("src", response["data"].url);
+        $(".profilePic").attr("src", response["data"].url);
       });
   	}
 });
