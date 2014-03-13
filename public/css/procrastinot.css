@@ -11,8 +11,8 @@ body {
 }
 
 .profilePic {
-	width: 50px;
-	height: 50px;
+	width: 100%;
+	height: 100%;
 }
 
 .homeButton {
@@ -94,4 +94,8 @@ body {
 
 .fullPic {
 	width:100%;
+}
+
+.helpButtonDiv {
+	padding: 17px;
 }
